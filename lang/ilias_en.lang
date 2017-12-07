@@ -1,0 +1,13 @@
+tab_text#:#Exercise Content Comparison
+desc_text#:#Here you can run the process of exercise content comparison
+comparison_result#:#Comparison result
+name_file_name#:#Name(Team)/File Name
+compared_with_name_file_name#:#(Compared With)Name(Team)/File Name
+threshold#:#Threshold
+k_gram#:#Number of Characters
+match_percent#:#Match Percent
+run_comparison#:#Run comparison
+unsupported_file_type#:#Unsupported file
+unreadable_file#:#Unreadable file
+comparison_error#:#Comparison error
+error_text#:#Error text

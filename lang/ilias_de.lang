@@ -1,0 +1,13 @@
+tab_text#:#Plagiat
+desc_text#:#Hier können Sie den Prozess des Plagiats ausführen
+comparison_result#:#Vergleichergebnis
+name_file_name#:#Name(Team)/Dateiname
+compared_with_name_file_name#:#(Vergleich mit)Name(Team)/File Name
+threshold#:#Threshold
+k_gram#:#Zeichenanzahl
+match_percent#:#Übereinstimmung Prozent
+run_comparison#:#Vergleich ausführen
+unsupported_file_type#:#Nicht unterstützte Datei
+unreadable_file#:#Unlesbare Datei
+comparison_error#:#Vergleichfehler
+error_text#:#Fehlertext
