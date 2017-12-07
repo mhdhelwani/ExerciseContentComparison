@@ -93,7 +93,7 @@ class ilExerciseContentComparisonPageGUI
         }
 
         reset($ass);
-        if (count($ass) > 1) {
+        if (count($ass) > 0) {
             $options = array();
             /**
              * @var ilExAssignment $a
@@ -137,15 +137,17 @@ class ilExerciseContentComparisonPageGUI
         $this->ctrl->setParameter($this, "ass_id", $this->selected_assignment_id);
         $ilToolbar->setFormAction($this->ctrl->getFormAction($this));
 
-        $tbl = new ilExerciseContentComparisonTableGUI($this, "showComparisonResult", $this->exercise, $selected_assignment);
+        if ($selected_assignment) {
+            $tbl = new ilExerciseContentComparisonTableGUI($this, "showComparisonResult", $this->exercise, $selected_assignment);
 
-        $this->tpl->setContent($tbl->getHTML());
+            $this->tpl->setContent($tbl->getHTML());
+        }
 
         $this->tab->activateSubTab("comparison_result");
         $this->tpl->show();
     }
 
-    protected function showExerciseContentComparisonError()
+    protected function showComparisonError()
     {
         global $ilToolbar;
 
@@ -161,7 +163,7 @@ class ilExerciseContentComparisonPageGUI
         }
 
         reset($ass);
-        if (count($ass) > 1) {
+        if (count($ass) > 0) {
             $options = array();
             /**
              * @var ilExAssignment $a
@@ -192,9 +194,10 @@ class ilExerciseContentComparisonPageGUI
         $this->ctrl->setParameter($this, "ass_id", $this->selected_assignment_id);
         $ilToolbar->setFormAction($this->ctrl->getFormAction($this));
 
-        $tbl = new ilExerciseContentComparisonErrorTableGUI($this, "showPExerciseContentComparisonErrorResult", $this->exercise, $selected_assignment);
-
-        $this->tpl->setContent($tbl->getHTML());
+        if ($selected_assignment) {
+            $tbl = new ilExerciseContentComparisonErrorTableGUI($this, "showPExerciseContentComparisonErrorResult", $this->exercise, $selected_assignment);
+            $this->tpl->setContent($tbl->getHTML());
+        }
 
         $this->tab->activateSubTab("comparison_error");
         $this->tpl->show();
@@ -218,7 +221,7 @@ class ilExerciseContentComparisonPageGUI
 
         $this->tab->addSubTab(
             "comparison_result",
-            $this->plugin->txt("tab_text"),
+            $this->plugin->txt("comparison_result"),
             $this->ctrl->getLinkTargetByClass(["iluipluginroutergui", "ilexercisecontentcomparisonpagegui"], "showComparisonResult"));
 
         $this->tab->addSubTab(
