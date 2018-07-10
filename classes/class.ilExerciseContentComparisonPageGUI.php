@@ -127,7 +127,8 @@ class ilExerciseContentComparisonPageGUI
             $k_gramInput->setValue($_POST["k_gram"]);
             $ilToolbar->addInputItem($k_gramInput, true);
 
-            $ilToolbar->addFormButton($this->plugin->txt("run_comparison"), "runComparison");
+//            $ilToolbar->addFormButton($this->plugin->txt("run_comparison"), "runComparison");
+            $ilToolbar->addFormButton($this->plugin->txt("add_to_cron_job"), "addToCronJob");
         } else if ($this->selected_assignment_id) {
             $this->ctrl->setParameter($this, "ass_id", $this->selected_assignment_id);
             $selected_assignment = current($ass);
@@ -245,6 +246,32 @@ class ilExerciseContentComparisonPageGUI
             $this->comparison($threshold, $k_gram, $_POST["ass_id"]);
         }
         $this->showComparisonResult();
+    }
+
+    protected function addToCronJob()
+    {
+        $threshold = $_POST["threshold"];
+        $k_gram = $_POST["k_gram"];
+
+
+        if (strlen($threshold) == 0 || !is_numeric($threshold) || strlen($k_gram) == 0 || !is_numeric($k_gram)) {
+            $this->lng->loadLanguageModule("form");
+            ilUtil::sendFailure($this->lng->txt("form_msg_numeric_value_required"), true);
+        } else {
+            $this->addToCronJobTable($threshold, $k_gram, $_POST["ass_id"]);
+        }
+        $this->showComparisonResult();
+    }
+
+    private function addToCronJobTable($a_threshold, $a_k_gram, $a_ass_id)
+    {
+        include_once("./Modules/Exercise/classes/class.ilExAssignmentTeam.php");
+
+        $assignment = new ilExAssignment($a_ass_id);
+        exerciseContentComparisonHelper::_addToCornJob($assignment->getExerciseId(),
+            $a_ass_id,
+            $a_threshold,
+            $a_k_gram);
     }
 
     private function comparison($a_threshold, $a_k_gram, $a_ass_id)

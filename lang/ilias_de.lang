@@ -7,7 +7,9 @@ threshold#:#Threshold
 k_gram#:#Zeichenanzahl
 match_percent#:#Übereinstimmung Prozent
 run_comparison#:#Vergleich ausführen
+add_to_cron_job#:#Zu Cron Job hinzufügen
 unsupported_file_type#:#Nicht unterstützte Datei
 unreadable_file#:#Unlesbare Datei
 comparison_error#:#Vergleichfehler
 error_text#:#Fehlertext
+msg_no_exercisecontentcomparison_cron#:#Das ExerciseContentComparisonCron Plugin ist nicht aktiv. Bitte installieren und aktivieren Sie es.

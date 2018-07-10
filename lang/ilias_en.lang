@@ -7,7 +7,9 @@ threshold#:#Threshold
 k_gram#:#Number of Characters
 match_percent#:#Match Percent
 run_comparison#:#Run comparison
+add_to_cron_job#:#Add To Cron Job
 unsupported_file_type#:#Unsupported file
 unreadable_file#:#Unreadable file
 comparison_error#:#Comparison error
 error_text#:#Error text
+msg_no_exercisecontentcomparison_cron#:#The ExerciseContentComparisonCron plugin is not active. Please install and active it.

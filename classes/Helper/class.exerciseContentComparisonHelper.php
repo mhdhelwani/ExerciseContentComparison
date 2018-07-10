@@ -49,6 +49,34 @@ class exerciseContentComparisonHelper
     }
 
     /**
+     * @param int $a_exercise_id
+     * @param int $a_ass_id
+     * @param int $a_threshold
+     * @param int $a_k_gram
+     */
+    public static function _addToCornJob($a_exercise_id, $a_ass_id, $a_threshold, $a_k_gram)
+    {
+        global $ilDB;
+
+        $query = "DELETE FROM cron_ecc_ass_list WHERE exercise_id = " .
+            $ilDB->quote($a_exercise_id, "integer") .
+            " and ass_id = " . $ilDB->quote($a_ass_id, "integer");
+
+        $ilDB->manipulate($query);
+
+        $id = $ilDB->nextId('cron_ecc_ass_list');
+
+        $values = [
+            "id" => ["integer", $id],
+            "exercise_id" => ["integer", $a_exercise_id],
+            "ass_id" => ["integer", $a_ass_id],
+            "threshold" => ["integer", $a_threshold],
+            "k_gram" => ["integer", $a_k_gram]];
+
+        $ilDB->insert("cron_ecc_ass_list", $values);
+    }
+
+    /**
      * Insert exercise content comparison error
      *
      * @param int $a_exercise_id
